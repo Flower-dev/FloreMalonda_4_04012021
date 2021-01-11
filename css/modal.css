@@ -590,37 +590,50 @@ footer {
 @media screen and (max-width: 667px) {
 
   .hero-content {
-    max-width: 100%;
+    max-width: 150%;
     margin: 0 auto;
     padding: 0 auto;
   }
 
   .hero-headline {
-    font-size: 0.5em;
+    font-size: 1.65em;
     font-weight: bolder;
     text-align: center;
-  
+    margin-left: -13%;
+    margin-bottom: -30px;
   }
+
   .hero-text {
-    max-width: 100%;
-    font-size: 0.0em;
+    max-width: 80%;
+    font-size: 0.75em;
+    margin-left: -4%;
     text-align: justify;
   }
 }
 
 /* Partie tablette */
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 670px) and (max-width: 800px) {
+  .hero-content {
+    max-width: 150%;
+    margin: 0 auto;
+    padding: 0 auto;
+  }
+
   .hero-headline {
     font-size: 2.5em;
-    text-align: center;
     font-weight: bolder;
-  
+    text-align: center;
+    margin-left: -3%;
+    margin-bottom: -30px;
   }
+
   .hero-text {
-    width: 100%;
-    font-size: 1em;
+    max-width: 100%;
+    font-size: 1.15em;
     text-align: justify;
   }
+
+
 } /* Affichage ok pour la partie tablette */
 
 

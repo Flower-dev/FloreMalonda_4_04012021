@@ -119,13 +119,15 @@ const confirmationCloseBtn = document.getElementById("btn-closed");
 function validate() {
 
   // liste des variables appelées dans la fonction 
-  let firstNameChecked;
-  let lastNameChecked;
-  let mailChecked;
-  let birthDateChecked;
-  let eventParticipationChecked;
-  let eventCityChecked;
-  let cguChecked;
+  
+    var firstNameChecked;
+    var lastNameChecked;
+    var mailChecked;
+    var birthDateChecked;
+    var eventParticipationChecked;
+    var eventCityChecked;
+    var cguChecked;
+
 
   // pour la validation du prénom - si présence d'1 des 3 erreurs ci-dessous envoyer un message d'erreur sinon OK
   if (firstName.value === '' || firstName.value == null || firstName.value.length < 2) {
@@ -138,11 +140,15 @@ function validate() {
   } else {
     errorFirstName.style.display = 'none';
     firstName.style.border = 'solid green 2px';
+    firstName.innerText = "Champ valide";
+    firstName.style.color = 'green';
+    firstName.style.fontSize = '0.8rem';
+    firstName.style.marginTop = '10px';
     firstNameChecked = true;
   };
 
   // pour la validation du nom - si présence d'1 des 3 erreurs ci-dessous envoyer un message d'erreur sinon OK
-  if (lastName.value === '' || lastName.value == null || lastName.value.length < 2) {
+    if (lastName.value === '' || lastName.value == null || lastName.value.length < 2) {
     errorLastName.innerText = "Veuillez entrer 2 caractères ou plus pour le champ du Nom.";
     errorLastName.style.color = 'red';
     errorLastName.style.fontSize = '0.8rem';
@@ -152,13 +158,17 @@ function validate() {
   } else {
     errorLastName.style.display = 'none';
     lastName.style.border = 'solid green 2px';
+    lastName.innerText = "Champ valide";
+    lastName.style.color = 'green';
+    lastName.style.fontSize = '0.8rem';
+    lastName.style.marginTop = '10px';
     lastNameChecked = true;
   };
 
   // expression régulière pour tester une adresse mail en JS : /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/
   // pour la validation de l'adresse mail il faut que cette expression régulière soit valide -- sinon afficher une alerte
   if (!/[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/.test(eMail.value)) { 
-    errorMail.innerText = "Veuillez entrer une addresse mail valide.";
+    errorMail.innerText = "Veuillez entrer une adresse mail valide.";
     errorMail.style.color = 'red';
     errorMail.style.fontSize = '0.8rem';
     errorMail.style.marginTop = '10px';
@@ -167,6 +177,10 @@ function validate() {
   } else {
     errorMail.style.display = 'none';
     eMail.style.border = 'solid green 2px';
+    eMail.innerText = "Champ valide";
+    eMail.style.color = 'green';
+    eMail.style.fontSize = '0.8rem';
+    eMail.style.marginTop = '10px';
     mailChecked = true;
   };
 
@@ -224,8 +238,7 @@ function validate() {
     cguChecked = true;
   };
 
-  //validation du formulaire + Apparition message validation
-
+  // ensemble des conditions à valider pour que le formulaire = OK 
   if (firstNameChecked == true && lastNameChecked == true 
     && mailChecked == true && birthDateChecked == true
     && eventParticipationChecked == true && eventCityChecked == true
@@ -237,7 +250,12 @@ function validate() {
     confirmationValidation.style.display = 'none';
     Event.preventDefault();
   };
+  
 }
+
+// ------- Faire apparaître le message de validation -----------------
+// Utiliser le bouton : const formValid = document.getElementById("btn-submit");
+
 
 // ------- Fermer le formulaire avec le message de validation ---------
 

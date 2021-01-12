@@ -239,7 +239,7 @@ input::placeholder {
   font-weight: normal;
 }
 
-/*.formData[data-error]::after {
+.formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
   color: #e54858;
@@ -254,18 +254,18 @@ input::placeholder {
 
 .formData[data-error-visible="true"]::after {
   opacity: 1;
-}*/
+}
 
-/*.formData[data-error-visible="true"] .text-control {
+.formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
-} A voir si nécessaire info dans fichier JS */
+} /*A voir si nécessaire info dans fichier JS*/
 
-/* 
+
 input[data-error]::after {
     content: attr(data-error);
     font-size: 0.4em;
     color: red;
-} */
+}
 
 .checkbox-label,
 .checkbox2-label {
@@ -487,12 +487,10 @@ input[data-error]::after {
 
 /* partie titre + texte de présentation & @media screen */
 
-/*TO DO :
+/*TO DO : -- OK 
 Pour la partie titre et présentation : 
 - gérer l'affichage du titre et du texte de présentation en version mobile
 - comprendre pourquoi présence d'une majuscule sur le M de "Je m'inscris" -> à supprimer
-
---> Ok pour tablette mais pas encore pour mobile - comprendre pourquoi ça ne fonctionne pas
 */
 
 .hero-headline {
@@ -632,9 +630,7 @@ footer {
     font-size: 1.15em;
     text-align: justify;
   }
-
-
-} /* Affichage ok pour la partie tablette */
+}
 
 
 @keyframes modalopen {

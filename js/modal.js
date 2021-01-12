@@ -213,8 +213,8 @@ function validate() {
   };
 
   //vérification des localisations --- A REPRENDRE 
-
-  if (!eventCity.checked) {
+            
+  if (eventCity.checked == false) {
     errorEventCity.innerText = "Veuillez choisir une ou plusieurs ville(s).";
     errorEventCity.style.color = 'red';
     errorEventCity.style.fontSize = '0.8rem';
@@ -225,10 +225,36 @@ function validate() {
     eventCityChecked = true;
   };
 
+ /*if (eventCity.value != 0) {
+    var location1 = document.getElementById('location1');
+    var location2 = document.getElementById('location2');
+    var location3 = document.getElementById('location3');
+    var location4 = document.getElementById('location4');
+    var location5 = document.getElementById('location5');
+    var location6 = document.getElementById('location6');
+
+    if ( location1.checked == false 
+        & location2.checked == false 
+        & location3.checked == false 
+        & location4.checked == false 
+        & location5.checked == false 
+        & location6.checked == false) {
+      errorEventCity.innerText = "Veuillez choisir une ou plusieurs ville(s).";
+      errorEventCity.style.color = 'red';
+      errorEventCity.style.fontSize = '0.8rem';
+      errorEventCity.style.marginTop = '10px'; 
+      return false;
+    } else {
+      errorEventCity.style.display = 'none';
+      eventCityChecked = true;
+    };
+  };*/
+
+
   // vérification de la validation des conditions générales d'utilisation (CGU) --- A REPRENDRE
 
-  if (!cgu.checked) {
-    errorCgu.innerText = "Vous devez vérifier que vous acceptez les termes et conditions.";
+  if (cgu.checked == false) {
+    errorCgu.innerText = "Vous devez accepter les termes et conditions.";
     errorCgu.style.color = 'red';
     errorCgu.style.fontSize = '0.8rem';
     errorCgu.style.marginTop = '10px';
@@ -237,6 +263,7 @@ function validate() {
     errorCgu.style.display = 'none';
     cguChecked = true;
   };
+
 
   // ensemble des conditions à valider pour que le formulaire = OK 
   if (firstNameChecked == true && lastNameChecked == true 

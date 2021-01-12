@@ -1,33 +1,33 @@
 /*
 INFO PERSO : Faire la différence entre getElementById() & querySelector()
 
-La méthode getElementById() de Document renvoie un objet  Element 
-représentant l'élément dont la propriété  id correspond à la chaîne 
-de caractères spécifiée. Étant donné que les ID d'élément doivent être uniques, 
-s'ils sont spécifiés, ils constituent un moyen utile d'accéder rapidement à 
+La méthode getElementById() de Document renvoie un objet  Element
+représentant l'élément dont la propriété  id correspond à la chaîne
+de caractères spécifiée. Étant donné que les ID d'élément doivent être uniques,
+s'ils sont spécifiés, ils constituent un moyen utile d'accéder rapidement à
 un élément spécifique.
 
-Si vous avez besoin d'accéder à un élément qui n'a pas d'ID, 
-vous pouvez utiliser querySelector() pour trouver l'élément 
+Si vous avez besoin d'accéder à un élément qui n'a pas d'ID,
+vous pouvez utiliser querySelector() pour trouver l'élément
 en utilisant un sélecteur.
 */
 
 /*
 INFO PERSO 2 : La différence entre `var` & `let`
 
-`let` permet de déclarer des variables dont la portée est limitée à celle du bloc dans 
-lequel elles sont déclarées. Le mot-clé `var`, quant à lui, permet de définir une variable globale ou 
+`let` permet de déclarer des variables dont la portée est limitée à celle du bloc dans
+lequel elles sont déclarées. Le mot-clé `var`, quant à lui, permet de définir une variable globale ou
 locale à une fonction (sans distinction des blocs utilisés dans la fonction).
 
-Une autre différence entre `let` et `var` est la façon dont 
-la variable est initialisée : pour `let`, la variable est initialisée à 
+Une autre différence entre `let` et `var` est la façon dont
+la variable est initialisée : pour `let`, la variable est initialisée à
 l'endroit où le parseur évalue son contenu.
 */
 
 
 /* fonction permettant de gérer l'apparition et la
 disparition du mode menu hamburger
-*/ 
+*/
 function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -40,14 +40,14 @@ function editNav() {
 
 /*
 INFO PERSO 3 : Qu'est ce qu'un DOM ?
-Le DOM, qui signifie Document Object Model (c'est-à-dire "modèle d'objet de document", en français), 
-est une interface de programmation qui est une représentation du HTML d'une page web et qui permet 
-d'accéder aux éléments de cette page web et de les modifier avec le langage JavaScript. 
+Le DOM, qui signifie Document Object Model (c'est-à-dire "modèle d'objet de document", en français),
+est une interface de programmation qui est une représentation du HTML d'une page web et qui permet
+d'accéder aux éléments de cette page web et de les modifier avec le langage JavaScript.
 */
 
 // DOM Elements
 const modalbg = document.querySelector(".bground"); // constante permettant de gérer le bground
-const modalBtn = document.querySelectorAll(".modal-btn"); // constante permettant au clic sur le btn de faire apparaître le formulaire 
+const modalBtn = document.querySelectorAll(".modal-btn"); // constante permettant au clic sur le btn de faire apparaître le formulaire
 const formData = document.querySelectorAll(".formData"); //L'objet FormData permet de créer un ensemble de paires clef-valeur (très utilisé dans les formulaires)
 const closeModalBtn = document.getElementsByClassName("close") //fermer le formulaire
 
@@ -57,8 +57,8 @@ const closeModalBtn = document.getElementsByClassName("close") //fermer le formu
 1 : <button class="btn-signup modal-btn"> Je m'inscris </button> ---- bouton pour l'inscription
 2 : <span class="close"></span> --- permet de fermer la modal ()
 3 : <input class="btn-submit" type="submit" class="button" value="C'est parti"
-id="btn-submit"/> --- bouton pour soumettre son formulaire et passer 
-4 : <button id="btn-closed" class="btn-confirm modal-btn"> Fermer </button> ----- bouton permettant de revenir à la page d'accueil 
+id="btn-submit"/> --- bouton pour soumettre son formulaire et passer
+4 : <button id="btn-closed" class="btn-confirm modal-btn"> Fermer </button> ----- bouton permettant de revenir à la page d'accueil
 */
 
 // ---------- Faire apparaitre le formulaire en appuyant sur le bouton "je m'inscris" ---------
@@ -71,8 +71,8 @@ function launchModal() {
 }
 
 // ---- Fermer le formulaire : Close Modal Form ---------
-/* INFO PERSO 4 : 
-pour réaliser cette fonction se baser sur l'exemple de celle qui 
+/* INFO PERSO 4 :
+pour réaliser cette fonction se baser sur l'exemple de celle qui
 permet de la faire appaitre : mettre un display none à la place de display block
 */
 
@@ -80,6 +80,8 @@ closeModalBtn[0].addEventListener("click", closeModal);
 
 function closeModal() {
   modalbg.style.display = 'none';
+  form.style.display = 'block';
+  confirmationValidation.style.display = 'none';
 }
 
 // ----------- Validation du formulaire d'inscription ------------
@@ -98,8 +100,8 @@ const firstName = document.getElementById("first");
 const lastName = document.getElementById("last");
 const eMail = document.getElementById("email");
 const birthDate = document.getElementById("birthdate");
-const eventParticipation = document.getElementById("quantity");
-const eventCity = document.getElementById('.checkbox-input[name="location"]');
+const eventParticipation = document.querySelector("#quantity");
+const eventCity = document.querySelectorAll('.checkbox-input[name="location"]');
 const cgu = document.getElementById("checkbox1");
 
 // ------- element quand c'est une erreur ----------
@@ -107,25 +109,25 @@ const errorFirstName = document.getElementById("missfirst");
 const errorLastName = document.getElementById("misslast");
 const errorMail = document.getElementById("missemail");
 const errorBirthDate = document.getElementById("missbirthdate");
-const erroreventParticipation = document.getElementById("missquantity");
+const errorEventParticipation = document.getElementById("missquantity");
 const errorEventCity = document.getElementById("misslocalisation");
 const errorCgu = document.getElementById("misscheckbox1");
-const numbersValue = [0-9];
+const numbersValue = /[0-9]/;
 
 const confirmationValidation = document.getElementById("confirm-modal");
-const confirmationCloseBtn = document.getElementById("btn-closed"); 
+const confirmationCloseBtn = document.getElementById("btn-closed");
 
 
 function validate() {
 
-  // liste des variables appelées dans la fonction 
-  
+  // liste des variables appelées dans la fonction
+
     var firstNameChecked;
     var lastNameChecked;
     var mailChecked;
     var birthDateChecked;
     var eventParticipationChecked;
-    var eventCityChecked;
+    var eventCityChecked = false;
     var cguChecked;
 
 
@@ -167,7 +169,7 @@ function validate() {
 
   // expression régulière pour tester une adresse mail en JS : /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/
   // pour la validation de l'adresse mail il faut que cette expression régulière soit valide -- sinon afficher une alerte
-  if (!/[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/.test(eMail.value)) { 
+  if (!/[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/.test(eMail.value)) {
     errorMail.innerText = "Veuillez entrer une adresse mail valide.";
     errorMail.style.color = 'red';
     errorMail.style.fontSize = '0.8rem';
@@ -185,7 +187,7 @@ function validate() {
   };
 
   // ----- TO DO : partie à vérifier car pb au niveau de la validation de la date ----------
-  if (!birthDate.value.match(/^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/)) { 
+  if (!birthDate.value.match(/^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/)) {
     errorBirthDate.innerText = "Veuillez indiquer votre date de naissance.";
     errorBirthDate.style.color = 'red';
     errorBirthDate.style.fontSize = '0.8rem';
@@ -195,10 +197,11 @@ function validate() {
     } else {
     errorBirthDate.style.display = 'none';
     birthDate.style.border = 'solid green 2px';
-    birthDateChecked = true;      
+    birthDateChecked = true;
   };
 
-  //vérification du nombre de participation 
+  //vérification du nombre de participation
+  console.log(eventParticipation.value)
   if (!eventParticipation.value.match(numbersValue)) {
     errorEventParticipation.innerText = "Veuillez indiquer un nombre de participation à nos tournois."
     errorEventParticipation.style.color = 'red';
@@ -212,13 +215,19 @@ function validate() {
     eventParticipationChecked = true;
   };
 
-  //vérification des localisations --- A REPRENDRE 
-            
-  if (eventCity.checked == false) {
+  //vérification des localisations --- A REPRENDRE
+
+  eventCity.forEach(function(e){
+    if(!eventCityChecked){
+      eventCityChecked = e.checked
+    }
+  })
+
+  if (!eventCityChecked) {
     errorEventCity.innerText = "Veuillez choisir une ou plusieurs ville(s).";
     errorEventCity.style.color = 'red';
     errorEventCity.style.fontSize = '0.8rem';
-    errorEventCity.style.marginTop = '10px'; 
+    errorEventCity.style.marginTop = '10px';
     return false;
   } else {
     errorEventCity.style.display = 'none';
@@ -233,16 +242,16 @@ function validate() {
     var location5 = document.getElementById('location5');
     var location6 = document.getElementById('location6');
 
-    if ( location1.checked == false 
-        & location2.checked == false 
-        & location3.checked == false 
-        & location4.checked == false 
-        & location5.checked == false 
+    if ( location1.checked == false
+        & location2.checked == false
+        & location3.checked == false
+        & location4.checked == false
+        & location5.checked == false
         & location6.checked == false) {
       errorEventCity.innerText = "Veuillez choisir une ou plusieurs ville(s).";
       errorEventCity.style.color = 'red';
       errorEventCity.style.fontSize = '0.8rem';
-      errorEventCity.style.marginTop = '10px'; 
+      errorEventCity.style.marginTop = '10px';
       return false;
     } else {
       errorEventCity.style.display = 'none';
@@ -265,8 +274,8 @@ function validate() {
   };
 
 
-  // ensemble des conditions à valider pour que le formulaire = OK 
-  if (firstNameChecked == true && lastNameChecked == true 
+  // ensemble des conditions à valider pour que le formulaire = OK
+  if (firstNameChecked == true && lastNameChecked == true
     && mailChecked == true && birthDateChecked == true
     && eventParticipationChecked == true && eventCityChecked == true
     && cguChecked == true) {
@@ -275,9 +284,8 @@ function validate() {
   } else {
     form.style.display = 'flex';
     confirmationValidation.style.display = 'none';
-    Event.preventDefault();
   };
-  
+
 }
 
 // ------- Faire apparaître le message de validation -----------------
@@ -287,3 +295,9 @@ function validate() {
 // ------- Fermer le formulaire avec le message de validation ---------
 
 document.getElementById("btn-closed").addEventListener("click", closeModal);
+
+const form = document.querySelector('form[name="reserve"]')
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+  validate();
+})

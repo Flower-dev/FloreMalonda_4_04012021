@@ -86,12 +86,6 @@ function closeModal() {
 
 // ----------- Validation du formulaire d'inscription ------------
 
-/* -------- TO DO : CE QUI NE FONCTIONNE PAS DANS LE FORMULAIRE ---------
-- pas possible de valider les CGU (Pourquoi ?? reprendre la fonction validate())
-- pas possible de seclectionner plusieurs villes (Pourquoi ?? reprendre la fonction validate())
-*/
-
-
 // ------ element correspondant au bouton --------
 const formValid = document.getElementById("btn-submit");
 
@@ -234,32 +228,6 @@ function validate() {
     eventCityChecked = true;
   };
 
- /*if (eventCity.value != 0) {
-    var location1 = document.getElementById('location1');
-    var location2 = document.getElementById('location2');
-    var location3 = document.getElementById('location3');
-    var location4 = document.getElementById('location4');
-    var location5 = document.getElementById('location5');
-    var location6 = document.getElementById('location6');
-
-    if ( location1.checked == false
-        & location2.checked == false
-        & location3.checked == false
-        & location4.checked == false
-        & location5.checked == false
-        & location6.checked == false) {
-      errorEventCity.innerText = "Veuillez choisir une ou plusieurs ville(s).";
-      errorEventCity.style.color = 'red';
-      errorEventCity.style.fontSize = '0.8rem';
-      errorEventCity.style.marginTop = '10px';
-      return false;
-    } else {
-      errorEventCity.style.display = 'none';
-      eventCityChecked = true;
-    };
-  };*/
-
-
   // vérification de la validation des conditions générales d'utilisation (CGU) --- A REPRENDRE
 
   if (cgu.checked == false) {
@@ -287,9 +255,6 @@ function validate() {
   };
 
 }
-
-// ------- Faire apparaître le message de validation -----------------
-// Utiliser le bouton : const formValid = document.getElementById("btn-submit");
 
 
 // ------- Fermer le formulaire avec le message de validation ---------

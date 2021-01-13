@@ -210,7 +210,7 @@ function validate() {
     eventParticipationChecked = true;
   };
 
-  //vérification des localisations --- A REPRENDRE
+  //vérification des localisations --- 
 
   eventCity.forEach(function(e){
     if(!eventCityChecked){
@@ -229,7 +229,7 @@ function validate() {
     eventCityChecked = true;
   };
 
-  // vérification de la validation des conditions générales d'utilisation (CGU) --- A REPRENDRE
+  // vérification de la validation des conditions générales d'utilisation (CGU) --- 
 
   if (cgu.checked == false) {
     errorCgu.innerText = "Vous devez accepter les termes et conditions.";

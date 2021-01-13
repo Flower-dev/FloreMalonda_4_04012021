@@ -4,6 +4,8 @@ Troisième projet réalisé dans le cadre de mon parcours Développeur d'applica
 
 **Contexte** : GameOn est une PME spécialisée dans les conférences & les concours de jeux. Après plusieurs retours négatifs de la part d'utilisateurs, l'entreprise a fait le choix de modifier sa page d'accueil ainsi que son formulaire d'inscription afin de coller aux attentes des utilisateurs. 
 
+Le formulaire est disponible en cliquant sur le lien suivant : https://flower-dev.github.io/FloreMalonda_4_04012021/
+
 Le but du travail est de : 
 - Reprendre le travail déjà effectué par un autre développeur
 

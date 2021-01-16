@@ -1,89 +1,10 @@
-/*
-INFO PERSO : Faire la différence entre getElementById() & querySelector()
-
-La méthode getElementById() de Document renvoie un objet  Element
-représentant l'élément dont la propriété  id correspond à la chaîne
-de caractères spécifiée. Étant donné que les ID d'élément doivent être uniques,
-s'ils sont spécifiés, ils constituent un moyen utile d'accéder rapidement à
-un élément spécifique.
-
-Si vous avez besoin d'accéder à un élément qui n'a pas d'ID,
-vous pouvez utiliser querySelector() pour trouver l'élément
-en utilisant un sélecteur.
-*/
-
-/*
-INFO PERSO 2 : La différence entre `var` & `let`
-
-`let` permet de déclarer des variables dont la portée est limitée à celle du bloc dans
-lequel elles sont déclarées. Le mot-clé `var`, quant à lui, permet de définir une variable globale ou
-locale à une fonction (sans distinction des blocs utilisés dans la fonction).
-
-Une autre différence entre `let` et `var` est la façon dont
-la variable est initialisée : pour `let`, la variable est initialisée à
-l'endroit où le parseur évalue son contenu.
-*/
-
-
-/* fonction permettant de gérer l'apparition et la
-disparition du mode menu hamburger
-*/
-function editNav() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
-}
-
-
-/*
-INFO PERSO 3 : Qu'est ce qu'un DOM ?
-Le DOM, qui signifie Document Object Model (c'est-à-dire "modèle d'objet de document", en français),
-est une interface de programmation qui est une représentation du HTML d'une page web et qui permet
-d'accéder aux éléments de cette page web et de les modifier avec le langage JavaScript.
-*/
-
 // DOM Elements
 const modalbg = document.querySelector(".bground"); // constante permettant de gérer le bground
 const modalBtn = document.querySelectorAll(".modal-btn"); // constante permettant au clic sur le btn de faire apparaître le formulaire
 const formData = document.querySelectorAll(".formData"); //L'objet FormData permet de créer un ensemble de paires clef-valeur (très utilisé dans les formulaires)
-const closeModalBtn = document.getElementsByClassName("close") //fermer le formulaire
+const closeModalBtn = document.querySelector(".close") //fermer le formulaire
 
 //const confirmationCloseBtn = document.getElementById("btn-closed"); bouton "fermer"
-
-/*CONCERNANT LES BOUTONS PRESENTS
-1 : <button class="btn-signup modal-btn"> Je m'inscris </button> ---- bouton pour l'inscription
-2 : <span class="close"></span> --- permet de fermer la modal ()
-3 : <input class="btn-submit" type="submit" class="button" value="C'est parti"
-id="btn-submit"/> --- bouton pour soumettre son formulaire et passer
-4 : <button id="btn-closed" class="btn-confirm modal-btn"> Fermer </button> ----- bouton permettant de revenir à la page d'accueil
-*/
-
-// ---------- Faire apparaitre le formulaire en appuyant sur le bouton "je m'inscris" ---------
-// launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-
-// launch modal form
-function launchModal() {
-  modalbg.style.display = 'block';
-  confirmationValidation.style.display = 'none';
-}
-
-// ---- Fermer le formulaire : Close Modal Form ---------
-/* INFO PERSO 4 :
-pour réaliser cette fonction se baser sur l'exemple de celle qui
-permet de la faire appaitre : mettre un display none à la place de display block
-*/
-
-closeModalBtn[0].addEventListener("click", closeModal);
-
-function closeModal() {
-  modalbg.style.display = 'none';
-  form.style.display = 'block';
-  confirmationValidation.style.display = 'none';
-}
 
 // ----------- Validation du formulaire d'inscription ------------
 
@@ -113,17 +34,49 @@ const confirmationValidation = document.getElementById("confirm-modal");
 const confirmationCloseBtn = document.getElementById("btn-closed");
 
 
+/* fonction permettant de gérer l'apparition et la
+disparition du mode menu hamburger
+*/
+function editNav() {
+  let x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+
+// ---------- Faire apparaitre le formulaire en appuyant sur le bouton "je m'inscris" ---------
+// launch modal event
+modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+
+// launch modal form
+function launchModal() {
+  modalbg.style.display = 'block';
+  confirmationValidation.style.display = 'none';
+}
+
+// ---- Fermer le formulaire : Close Modal Form ---------
+
+closeModalBtn[0].addEventListener("click", closeModal);
+
+function closeModal() {
+  modalbg.style.display = 'none';
+  form.style.display = 'block';
+  confirmationValidation.style.display = 'none';
+}
+
 function validate() {
 
   // liste des variables appelées dans la fonction
 
-    var firstNameChecked;
-    var lastNameChecked;
-    var mailChecked;
-    var birthDateChecked;
-    var eventParticipationChecked;
-    var eventCityChecked = false;
-    var cguChecked;
+    let firstNameChecked;
+    let lastNameChecked;
+    let mailChecked;
+    let birthDateChecked;
+    let eventParticipationChecked;
+    let eventCityChecked = false;
+    let cguChecked;
 
 
   // pour la validation du prénom - si présence d'1 des 3 erreurs ci-dessous envoyer un message d'erreur sinon OK

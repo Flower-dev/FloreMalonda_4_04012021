@@ -144,15 +144,6 @@ doit être caché en desktop d'où le display: none */
 
 /* les media screen ci-dessus permettent de gérer l'affichage du menu en version mobile */
 
-/*TO DO :
-Pour la partie menu :
-- faire attention à l'alignenement entre le logo et le symbole menu (utiliser la propriété align-items :center)
-- changer la couleur du symbole menu pour qu'il passe en rouge comme sur la maquette
-- mettre un peu plus de marges en haut (appliquer un margin-top en header)
-
---> fait pour tablette & mobile
-*/
-
 /* partie formulaire */
 
 main {
@@ -511,12 +502,6 @@ input[data-error]::after {
 
 /* partie titre + texte de présentation & @media screen */
 
-/*TO DO :
-Pour la partie titre et présentation :
-- gérer l'affichage du titre et du texte de présentation en version mobile
-- comprendre pourquoi présence d'une majuscule sur le M de "Je m'inscris" -> à supprimer
-*/
-
 .hero-headline {
   width: 100%;
   font-size: 4em;
@@ -551,6 +536,7 @@ Pour la partie titre et présentation :
   height: 100%;
   display: block;
   padding: 0;
+  object-fit: cover;
 }
 
 .copyrights {
@@ -596,6 +582,7 @@ footer {
   .hero-img img {
     border-radius: 10px;
     margin-top: 20px;
+    object-fit: cover;
   }
   .hero-section > .btn-signup {
     display: block;

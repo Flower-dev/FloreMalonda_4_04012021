@@ -2,41 +2,41 @@
 const modalbg = document.querySelector(".bground"); // constante permettant de gérer le bground
 const modalBtn = document.querySelectorAll(".modal-btn"); // constante permettant au clic sur le btn de faire apparaître le formulaire
 const formData = document.querySelectorAll(".formData"); //L'objet FormData permet de créer un ensemble de paires clef-valeur (très utilisé dans les formulaires)
-const closeModalBtn = document.querySelector(".close") //fermer le formulaire
-
-//const confirmationCloseBtn = document.getElementById("btn-closed"); bouton "fermer"
-
-// ----------- Validation du formulaire d'inscription ------------
+const closeModalBtn = document.querySelectorAll(".close") //fermer le formulaire
+const confirmationCloseBtn = document.querySelector("#btn-closed"); // bouton "fermer"
 
 // ------ element correspondant au bouton --------
-const formValid = document.getElementById("btn-submit");
+const formValid = document.querySelector("#btn-submit");
 
 // ------- element quand c'est OK ----------
-const firstName = document.getElementById("first");
-const lastName = document.getElementById("last");
-const eMail = document.getElementById("email");
-const birthDate = document.getElementById("birthdate");
+const firstName = document.querySelector("#first");
+const lastName = document.querySelector("#last");
+const eMail = document.querySelector("#email");
+const birthDate = document.querySelector("#birthdate");
 const eventParticipation = document.querySelector("#quantity");
 const eventCity = document.querySelectorAll('.checkbox-input[name="location"]');
-const cgu = document.getElementById("checkbox1");
+const cgu = document.querySelector("#checkbox1");
 
 // ------- element quand c'est une erreur ----------
-const errorFirstName = document.getElementById("missfirst");
-const errorLastName = document.getElementById("misslast");
-const errorMail = document.getElementById("missemail");
-const errorBirthDate = document.getElementById("missbirthdate");
-const errorEventParticipation = document.getElementById("missquantity");
-const errorEventCity = document.getElementById("misslocalisation");
-const errorCgu = document.getElementById("misscheckbox1");
+const errorFirstName = document.querySelector("#missfirst");
+const errorLastName = document.querySelector("#misslast");
+const errorMail = document.querySelector("#missemail");
+const errorBirthDate = document.querySelector("#missbirthdate");
+const errorEventParticipation = document.querySelector("#missquantity");
+const errorEventCity = document.querySelector("#misslocalisation");
+const errorCgu = document.querySelector("#misscheckbox1");
 const numbersValue = /[0-9]/;
 
-const confirmationValidation = document.getElementById("confirm-modal");
-const confirmationCloseBtn = document.getElementById("btn-closed");
+const confirmationValidation = document.querySelector("#confirm-modal");
+
+// ------------ element pour l'envoi du formulaire ------------------------
+const form = document.querySelector('form[name="reserve"]')
 
 
-/* fonction permettant de gérer l'apparition et la
-disparition du mode menu hamburger
-*/
+
+
+// --------- gestion du menu hambuger (responsive) ------------
+
 function editNav() {
   let x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -46,7 +46,7 @@ function editNav() {
   }
 }
 
-// ---------- Faire apparaitre le formulaire en appuyant sur le bouton "je m'inscris" ---------
+// ---------- Launch Modal Form ---------
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -56,7 +56,7 @@ function launchModal() {
   confirmationValidation.style.display = 'none';
 }
 
-// ---- Fermer le formulaire : Close Modal Form ---------
+// ---- Close Modal Form ---------
 
 closeModalBtn[0].addEventListener("click", closeModal);
 
@@ -65,6 +65,15 @@ function closeModal() {
   form.style.display = 'block';
   confirmationValidation.style.display = 'none';
 }
+
+// ------------ Envoi du formulaire d'inscription ------------------
+
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+  validate();
+})
+
+// -------------------- Validation du formulaire ----------------------
 
 function validate() {
 
@@ -80,7 +89,7 @@ function validate() {
 
 
   // pour la validation du prénom - si présence d'1 des 3 erreurs ci-dessous envoyer un message d'erreur sinon OK
-  if (firstName.value === '' || firstName.value == null || firstName.value.length < 2) {
+  if (firstName.value.toString().trim().length < 2) {
     errorFirstName.innerText = "Veuillez entrer 2 caractères ou plus pour le champ du Prénom.";
     errorFirstName.style.color = 'red';
     errorFirstName.style.fontSize = '0.8rem';
@@ -98,7 +107,7 @@ function validate() {
   };
 
   // pour la validation du nom - si présence d'1 des 3 erreurs ci-dessous envoyer un message d'erreur sinon OK
-    if (lastName.value === '' || lastName.value == null || lastName.value.length < 2) {
+    if (lastName.value.toString().trim().length < 2) {
     errorLastName.innerText = "Veuillez entrer 2 caractères ou plus pour le champ du Nom.";
     errorLastName.style.color = 'red';
     errorLastName.style.fontSize = '0.8rem';
@@ -115,7 +124,7 @@ function validate() {
     lastNameChecked = true;
   };
 
-  // expression régulière pour tester une adresse mail en JS : /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/
+
   // pour la validation de l'adresse mail il faut que cette expression régulière soit valide -- sinon afficher une alerte
   if (!/[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/.test(eMail.value)) {
     errorMail.innerText = "Veuillez entrer une adresse mail valide.";
@@ -134,7 +143,7 @@ function validate() {
     mailChecked = true;
   };
 
-  // ----- TO DO : partie à vérifier car pb au niveau de la validation de la date ----------
+
   if (!birthDate.value.match(/^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/)) {
     errorBirthDate.innerText = "Veuillez indiquer votre date de naissance.";
     errorBirthDate.style.color = 'red';
@@ -149,7 +158,6 @@ function validate() {
   };
 
   //vérification du nombre de participation
-  console.log(eventParticipation.value)
   if (!eventParticipation.value.match(numbersValue)) {
     errorEventParticipation.innerText = "Veuillez indiquer un nombre de participation à nos tournois."
     errorEventParticipation.style.color = 'red';
@@ -210,13 +218,8 @@ function validate() {
 
 }
 
-
 // ------- Fermer le formulaire avec le message de validation ---------
 
-document.getElementById("btn-closed").addEventListener("click", closeModal);
+document.querySelector("#btn-closed").addEventListener("click", closeModal);
 
-const form = document.querySelector('form[name="reserve"]')
-form.addEventListener('submit', function(e){
-  e.preventDefault();
-  validate();
-})
+

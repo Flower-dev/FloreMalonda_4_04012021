@@ -34,18 +34,13 @@
 
         <!-- la balise <a> ci-dessous permet de changer la navbar
           de la partie desktop en menu "hamburger" pour la partie mobile -->
-        <a href="javascript:void(0);" class="icon" onclick="editNav()">
+        <a href="#" class="icon">
           <i class="fa fa-bars"></i>
         </a>
       </div>
     </div>
 
     <main> <!-- partie formulaire -->
-      <!-- info perso : L’élément <main> représente le contenu majoritaire
-        du <body> du document. Le contenu principal de la zone est constitué de
-        contenu directement en relation, ou qui étend le sujet principal du
-        document ou de la fonctionnalité principale d'une application.
-      -->
 
       <div class="hero-section"> <!-- dans cette div se trouve ce que est sur la page d'accueil -->
 
@@ -84,12 +79,8 @@
             <form
               name="reserve"
               action="index.html"
-              method="get"
-            > <!-- info perso : <form> représente une section d'un document qui contient
-              des contrôles interactifs permettant à un utilisateur d'envoyer
-              des données à un serveur web.-->
-              <!-- info perso : onsubmit permet de contrôler l'envoi du formulaire
-              return false permet de bloquer l'envoi de ce dernier-->
+              method="get">
+
               <div class="formData">
                 <label>Prénom</label><br> <!-- ne doit contenir que des lettres -->
                 <input
@@ -113,13 +104,6 @@
                 /><span id="misslast"></span>
                 <br>
               </div>
-
-              <!--
-              - minlength="2" : forcer les utilisateurs à utiliser plus de 2 caractères --
-              à voir si utile de l'utiliser car check JS
-              - placeholder : indiquer ce qui est attendu dans le champ
-              - pattern : baliser les valeurs d'entrée attendues
-              -->
 
               <div class="formData">
                 <label>E-mail</label><br> <!-- peut contenir des lettres, chiffres et caractères spéciaux -->

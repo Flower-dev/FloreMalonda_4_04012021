@@ -4,6 +4,8 @@ const modalBtn = document.querySelectorAll(".modal-btn"); // constante permettan
 const formData = document.querySelectorAll(".formData"); //L'objet FormData permet de créer un ensemble de paires clef-valeur (très utilisé dans les formulaires)
 const closeModalBtn = document.querySelectorAll(".close") //fermer le formulaire
 const confirmationCloseBtn = document.querySelector("#btn-closed"); // bouton "fermer"
+const menuResponsive = document.querySelector("#MyTopnav .icon")
+const topNav = document.querySelector("#MyTopnav")
 
 // ------ element correspondant au bouton --------
 const formValid = document.querySelector("#btn-submit");
@@ -36,13 +38,14 @@ const form = document.querySelector('form[name="reserve"]')
 
 
 // --------- gestion du menu hambuger (responsive) ------------
+//menuResponsive.addEventListener('click', editNav); // --------- A REVOIR ------
 
-function editNav() {
-  let x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
+function editNav(event) {
+  event.preventDefault();
+  if (topNav.className === "topnav") {
+    topNav.className += " responsive";
   } else {
-    x.className = "topnav";
+    topNave.className = "topnav";
   }
 }
 
@@ -73,8 +76,73 @@ form.addEventListener('submit', function(e){
   validate();
 })
 
+
+
+// -------------------- test validation formulaire par input -----------
+function validateFirstName(firstName) {
+  if (firstName.value.toString().trim().length < 2) {
+    errorFirstName.innerText = "Veuillez entrer 2 caractères ou plus pour le champ du Prénom.";
+    errorFirstName.style.color = 'red';
+    errorFirstName.style.fontSize = '0.8rem';
+    errorFirstName.style.marginTop = '10px';
+    firstName.style.border = 'solid red 2px';
+    return false;
+  } else {
+    errorFirstName.style.display = 'none';
+    firstName.style.border = 'solid green 2px';
+    firstName.style.color = 'green';
+    firstName.style.fontSize = '0.8rem';
+    firstName.style.marginTop = '10px';
+    return true;
+  };
+}
+
+function validateLastName(lastName) {
+  if (lastName.value.toString().trim().length < 2) {
+    errorLastName.innerText = "Veuillez entrer 2 caractères ou plus pour le champ du Nom.";
+    errorLastName.style.color = 'red';
+    errorLastName.style.fontSize = '0.8rem';
+    errorLastName.style.marginTop = '10px';
+    lastName.style.border = 'solid red 2px';
+    return false;
+  } else {
+    errorLastName.style.display = 'none';
+    lastName.style.border = 'solid green 2px';
+    lastName.style.color = 'green';
+    lastName.style.fontSize = '0.8rem';
+    lastName.style.marginTop = '10px';
+    return true;
+  };
+}
+
+
+
+
 // -------------------- Validation du formulaire ----------------------
 
+function validate() {
+// ne pas oublier de déclarer une variable
+  let isFormValidate = [];
+
+  isFormValidate.push(validateFirtName(firstName));
+  isFormValidate.push(validateLastName(lastName));
+
+  if (!isFormValidate.includes(false)) {
+    form.style.display = 'flex';
+    confirmationValidation.style.display = 'none';
+  } else {
+    form.style.display = 'none';
+    confirmationValidation.style.display = 'flex';
+  };
+}
+
+// ------- Fermer le formulaire avec le message de validation ---------
+
+document.querySelector("#btn-closed").addEventListener("click", closeModal);
+
+
+// -------------------- Ancienne version Validation du formulaire ----------------------
+/*
 function validate() {
 
   // liste des variables appelées dans la fonction
@@ -216,10 +284,4 @@ function validate() {
     confirmationValidation.style.display = 'none';
   };
 
-}
-
-// ------- Fermer le formulaire avec le message de validation ---------
-
-document.querySelector("#btn-closed").addEventListener("click", closeModal);
-
-
+}*/

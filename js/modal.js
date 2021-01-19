@@ -4,8 +4,8 @@ const modalBtn = document.querySelectorAll(".modal-btn"); // constante permettan
 const formData = document.querySelectorAll(".formData"); //L'objet FormData permet de créer un ensemble de paires clef-valeur (très utilisé dans les formulaires)
 const closeModalBtn = document.querySelectorAll(".close") //fermer le formulaire
 const confirmationCloseBtn = document.querySelector("#btn-closed"); // bouton "fermer"
-const menuResponsive = document.querySelector("#MyTopnav .icon")
-const topNav = document.querySelector("#MyTopnav")
+const menuResponsive = document.querySelector("#myTopnav .icon")
+const topNav = document.querySelector("#myTopnav")
 
 // ------ element correspondant au bouton --------
 const formValid = document.querySelector("#btn-submit");
@@ -35,18 +35,16 @@ const confirmationValidation = document.querySelector("#confirm-modal");
 const form = document.querySelector('form[name="reserve"]')
 
 
-
-
 // --------- gestion du menu hambuger (responsive) ------------
-//menuResponsive.addEventListener('click', editNav); // --------- A REVOIR ------
+menuResponsive.addEventListener('click', editNav); // --------- A REVOIR ------
 
 function editNav(event) {
-  event.preventDefault();
-  if (topNav.className === "topnav") {
-    topNav.className += " responsive";
-  } else {
-    topNave.className = "topnav";
-  }
+    event.preventDefault();
+    if (topNav.className === "topnav") {
+        topNav.className += " responsive";
+    } else {
+        topNav.className = "topnav";
+    }
 }
 
 // ---------- Launch Modal Form ---------
@@ -55,8 +53,8 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // launch modal form
 function launchModal() {
-  modalbg.style.display = 'block';
-  confirmationValidation.style.display = 'none';
+    modalbg.style.display = 'block';
+    confirmationValidation.style.display = 'none';
 }
 
 // ---- Close Modal Form ---------
@@ -64,95 +62,108 @@ function launchModal() {
 closeModalBtn[0].addEventListener("click", closeModal);
 
 function closeModal() {
-  modalbg.style.display = 'none';
-  form.style.display = 'block';
-  confirmationValidation.style.display = 'none';
+    modalbg.style.display = 'none';
+    form.style.display = 'block';
+    confirmationValidation.style.display = 'none';
 }
 
 // ------------ Envoi du formulaire d'inscription ------------------
 
-form.addEventListener('submit', function(e){
-  e.preventDefault();
-  validate();
+form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    validate();
 });
 
 
 // -------------------- test validation formulaire par input -----------
 function validateFirstName(firstName) {
-  if (firstName.value.toString().trim().length < 2) {
-    errorFirstName.innerText = "Veuillez entrer 2 caractères ou plus pour le champ du Prénom.";
-    errorFirstName.style.color = 'red';
-    errorFirstName.style.fontSize = '0.8rem';
-    errorFirstName.style.marginTop = '10px';
-    firstName.style.border = 'solid red 2px';
-    return false;
-  } else {
-    errorFirstName.style.display = 'none';
-    firstName.style.border = 'solid green 2px';
-    firstName.style.color = 'green';
-    firstName.style.fontSize = '0.8rem';
-    firstName.style.marginTop = '10px';
-    return true;
-  };
-};
+    const formDataFirstName = document.querySelector('#formDataFirstName');
+    if (firstName.value.toString().trim().length < 2) {
+        /*errorFirstName.style.display = 'inline';
+        errorFirstName.innerText = "Veuillez entrer 2 caractères ou plus pour le champ du Prénom.";
+        errorFirstName.style.color = 'red';
+        errorFirstName.style.fontSize = '0.8rem';
+        errorFirstName.style.marginTop = '10px';
+        firstName.style.border = 'solid red 2px'*/
+        ;
+        errorFirstName.innerText = "Veuillez entrer 2 caractères ou plus pour le champ du Prénom.";
+        formDataFirstName.classList.add("error")
 
-function validateLastName(lastName) {
-  if (lastName.value.toString().trim().length < 2) {
-    errorLastName.innerText = "Veuillez entrer 2 caractères ou plus pour le champ du Nom.";
-    errorLastName.style.color = 'red';
-    errorLastName.style.fontSize = '0.8rem';
-    errorLastName.style.marginTop = '10px';
-    lastName.style.border = 'solid red 2px';
-    return false;
-  } else {
-    errorLastName.style.display = 'none';
-    lastName.style.border = 'solid green 2px';
-    lastName.style.color = 'green';
-    lastName.style.fontSize = '0.8rem';
-    lastName.style.marginTop = '10px';
-    return true;
-  };
-};
-
-function validateEmail(eMail) {
-  if (!/[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/.test(eMail.value)) {
-    errorMail.innerText = "Veuillez entrer une adresse mail valide.";
-    errorMail.style.color = 'red';
-    errorMail.style.fontSize = '0.8rem';
-    errorMail.style.marginTop = '10px';
-    eMail.style.border = 'solid red 2px';
-    return false;
-  } else {
-    errorMail.style.display = 'none';
-    eMail.style.border = 'solid green 2px';
-    eMail.innerText = "Champ valide";
-    eMail.style.color = 'green';
-    eMail.style.fontSize = '0.8rem';
-    eMail.style.marginTop = '10px';
-    mailChecked = true;
-  };
+        return false;
+    } else {
+        formDataFirstName.classList.remove("error")
+        formDataFirstName.classList.add("success")
+        //errorFirstName.style.display = 'none';
+        /*firstName.style.border = 'solid green 2px';
+        firstName.style.color = 'green';
+        firstName.style.fontSize = '0.8rem';
+        firstName.style.marginTop = '10px';*/
+        return true;
+    }
 }
 
+function validateLastName(lastName) {
+    if (lastName.value.toString().trim().length < 2) {
+        errorLastName.style.display = 'inline';
+        errorLastName.innerText = "Veuillez entrer 2 caractères ou plus pour le champ du Nom.";
+        errorLastName.style.color = 'red';
+        errorLastName.style.fontSize = '0.8rem';
+        errorLastName.style.marginTop = '10px';
+        lastName.style.border = 'solid red 2px';
+        return false;
+    } else {
+        errorLastName.style.display = 'none';
+        lastName.style.border = 'solid green 2px';
+        lastName.style.color = 'green';
+        lastName.style.fontSize = '0.8rem';
+        lastName.style.marginTop = '10px';
+        return true;
+    }
+}
 
+function validateEmail(eMail) {
+    if (!/[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/.test(eMail.value)) {
+        errorMail.style.display = "inline"
+        errorMail.innerText = "Veuillez entrer une adresse mail valide.";
+        errorMail.style.color = 'red';
+        errorMail.style.fontSize = '0.8rem';
+        errorMail.style.marginTop = '10px';
+        eMail.style.border = 'solid red 2px';
+        return false;
+    } else {
+        errorMail.style.display = 'none';
+        eMail.style.border = 'solid green 2px';
+        eMail.innerText = "Champ valide";
+        eMail.style.color = 'green';
+        eMail.style.fontSize = '0.8rem';
+        eMail.style.marginTop = '10px';
+        mailChecked = true;
+    }
+}
 
 
 // -------------------- Validation du formulaire ----------------------
 
 function validate() {
 // ne pas oublier de déclarer une variable
-  let isFormValidate = [];
+    let isFormValidate = [];
 
-  isFormValidate.push(validateFirstName(firstName));
-  isFormValidate.push(validateLastName(lastName));
-  isFormValidate.push(validateEmail(eMail));
+    isFormValidate.push(validateFirstName(firstName));
+    isFormValidate.push(validateLastName(lastName));
+    isFormValidate.push(validateEmail(eMail));
 
-  if (!isFormValidate.includes(false)) {
-    form.style.display = 'flex';
-    confirmationValidation.style.display = 'none';
-  } else {
-    form.style.display = 'none';
-    confirmationValidation.style.display = 'flex';
-  };
+    if (!isFormValidate.includes(false)) {
+        form.style.display = 'none';
+        confirmationValidation.style.display = 'flex';
+    }
+
+    /*if (!isFormValidate.includes(false)) {
+      form.style.display = 'flex';
+      confirmationValidation.style.display = 'none';
+    } else {
+      form.style.display = 'none';
+      confirmationValidation.style.display = 'flex';
+    };*/
 }
 
 // ------- Fermer le formulaire avec le message de validation ---------
@@ -258,7 +269,7 @@ function validate() {
     eventParticipationChecked = true;
   };
 
-  //vérification des localisations --- 
+  //vérification des localisations ---
 
   eventCity.forEach(function(e){
     if(!eventCityChecked){
@@ -277,7 +288,7 @@ function validate() {
     eventCityChecked = true;
   };
 
-  // vérification de la validation des conditions générales d'utilisation (CGU) --- 
+  // vérification de la validation des conditions générales d'utilisation (CGU) ---
 
   if (cgu.checked == false) {
     errorCgu.innerText = "Vous devez accepter les termes et conditions.";

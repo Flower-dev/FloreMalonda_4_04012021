@@ -640,6 +640,30 @@ footer {
 
 
 /* ------- Mise en page des alertes --------- */
+
+.error span {
+  display: inline;
+  color: red;
+  font-size: .8rem;
+  margin-top: 10px;
+}
+
+.error input {
+  border: 2px solid red;
+}
+
+.success span {
+  display: none;
+}
+
+.success input {
+  border: 2px solid green;
+}
+
+
+
+
+/*
 .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
@@ -659,7 +683,7 @@ footer {
 
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
-} /*A voir si nécessaire info dans fichier JS*/
+} 
 
 
 input[data-error]::after {
@@ -667,25 +691,4 @@ input[data-error]::after {
     font-size: 0.4em;
     color: red;
 }
-
-.error span {
-  color: red;
-  font-size: .8rem;
-  margin-top: 10px;
-}
-
-.error input {
-  border: 2px solid red;
-}
-
-.success span {
-  display: none;
-}
-
-.success input {
-  border: 2px solid green;
-  color: green;
-  font-size: .8rem;
-}
-
-
+*/

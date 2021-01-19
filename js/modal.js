@@ -74,8 +74,7 @@ function closeModal() {
 form.addEventListener('submit', function(e){
   e.preventDefault();
   validate();
-})
-
+});
 
 
 // -------------------- test validation formulaire par input -----------
@@ -95,7 +94,7 @@ function validateFirstName(firstName) {
     firstName.style.marginTop = '10px';
     return true;
   };
-}
+};
 
 function validateLastName(lastName) {
   if (lastName.value.toString().trim().length < 2) {
@@ -113,6 +112,25 @@ function validateLastName(lastName) {
     lastName.style.marginTop = '10px';
     return true;
   };
+};
+
+function validateEmail(eMail) {
+  if (!/[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/.test(eMail.value)) {
+    errorMail.innerText = "Veuillez entrer une adresse mail valide.";
+    errorMail.style.color = 'red';
+    errorMail.style.fontSize = '0.8rem';
+    errorMail.style.marginTop = '10px';
+    eMail.style.border = 'solid red 2px';
+    return false;
+  } else {
+    errorMail.style.display = 'none';
+    eMail.style.border = 'solid green 2px';
+    eMail.innerText = "Champ valide";
+    eMail.style.color = 'green';
+    eMail.style.fontSize = '0.8rem';
+    eMail.style.marginTop = '10px';
+    mailChecked = true;
+  };
 }
 
 
@@ -124,8 +142,9 @@ function validate() {
 // ne pas oublier de déclarer une variable
   let isFormValidate = [];
 
-  isFormValidate.push(validateFirtName(firstName));
+  isFormValidate.push(validateFirstName(firstName));
   isFormValidate.push(validateLastName(lastName));
+  isFormValidate.push(validateEmail(eMail));
 
   if (!isFormValidate.includes(false)) {
     form.style.display = 'flex';

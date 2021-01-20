@@ -148,7 +148,7 @@ function validateEventParticipation(eventParticipation) {
       errorEventParticipation.style.color = 'red';
       errorEventParticipation.style.fontSize = '0.8rem';
       errorEventParticipation.style.marginTop = '10px';
-      errorEventParticipation.style.border = 'solid red 2px';
+      eventParticipation.style.border = 'solid red 2px';
     return false;
   } else {
       errorEventParticipation.style.display = 'none';

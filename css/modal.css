@@ -199,7 +199,7 @@ main {
 
 /*.smFont {
   font-size: 16px;
-}  A QUOI CORRESPOND CETTE PARTIE ?????? n'apparait pas dans le code HTML */
+} */
 
 .bground {
   display: none;
@@ -207,7 +207,7 @@ main {
   z-index: 1;
   left: 0;
   top: 0;
-  height: 100%;
+  height: 150%;
   width: 100%;
   overflow: auto;
   background-color: rgba(26, 39, 156, 0.4);

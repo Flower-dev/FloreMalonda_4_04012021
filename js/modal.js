@@ -158,18 +158,24 @@ function validateEventParticipation(eventParticipation) {
 }
 
 function validateEventCity(eventCity) {
-console.log(eventCity.checked)
-  if (eventCity.checked == false) {
-      errorEventCity.style.display = "inline";
-      errorEventCity.innerText = "Veuillez choisir une ou plusieurs ville(s).";
-      errorEventCity.style.color = 'red';
-      errorEventCity.style.fontSize = '0.8rem';
-      errorEventCity.style.marginTop = '10px';
-      return false;
-  } else {
-      errorEventCity.style.display = 'none';
-      return true;
-  };
+  let eventCityChecked = 0;
+  eventCity.forEach(i => {
+    if (i.checked) {
+      eventCityChecked++;
+    }
+  })
+  
+  if (eventCityChecked === 0) {
+        errorEventCity.style.display = "inline";
+        errorEventCity.innerText = "Veuillez choisir une ou plusieurs ville(s).";
+        errorEventCity.style.color = 'red';
+        errorEventCity.style.fontSize = '0.8rem';
+        errorEventCity.style.marginTop = '10px';
+        return false;
+    } else {
+        errorEventCity.style.display = 'none';
+        return true;
+    };
 }
 
 function validateCgu(cgu) {
